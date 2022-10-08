@@ -4,6 +4,8 @@ import time
 import sys
 
 # Base class for calculator
+
+
 class Calculator(Tk):
     def __init__(self, output_bg, output_fg, button_bg, button_fg):
         super().__init__()
@@ -16,13 +18,14 @@ class Calculator(Tk):
         self.BUTTON_BG = button_bg
         self.BUTTON_FG = button_fg
         self.BUTTON_WIDTH = 6
-        self.BUTTON_HEIGHT=0
+        self.BUTTON_HEIGHT = 0
 
         self.Initialize()
         self.geometry('400x400')
         self.title("Calculator")
         self.configure(bg='grey')
-        self.button_list = [self.button0, self.button1, self.button2, self.button3, self.button4, self.button5, self.button6, self.button7, self.button8, self.button9, self.button_add, self.button_subtract, self.button_multiply, self.button_divide, self.button_equal, self.button_dot]
+        self.button_list = [self.button0, self.button1, self.button2, self.button3, self.button4, self.button5, self.button6, self.button7, self.button8,
+                            self.button9, self.button_add, self.button_subtract, self.button_multiply, self.button_divide, self.button_equal, self.button_dot]
 
         # Keyboard bindings
         self.bind("<Key-0>", self.key_press)
@@ -76,9 +79,10 @@ class Calculator(Tk):
                 self.update_idletasks()
                 time.sleep(0.1)
                 self.button_multiply.invoke()
-                self.button_multiply.configure(bg=self.BUTTON_BG, relief="raised")
+                self.button_multiply.configure(
+                    bg=self.BUTTON_BG, relief="raised")
                 break
-    
+
     # Function for enter key press
     def enter_key_press(self, event):
         self.button_equal.configure(bg="white", relief="sunken")
@@ -99,7 +103,7 @@ class Calculator(Tk):
         self.output_entry.configure(state=NORMAL)
         self.output_entry.delete(0, len(expression))
         self.output_entry.insert(END, str(eval(expression)))
-        
+
         self.output_entry.configure(state=DISABLED)
 
     # Start calculator
@@ -118,72 +122,105 @@ class Calculator(Tk):
         self.grid_rowconfigure(1, weight=4)
         self.grid_columnconfigure(0, weight=1)
 
-        self.output_entry = Entry(self.output_frame, font=self.OUTPUT_FONT, state=DISABLED, disabledbackground=self.OUTPUT_BG)
+        self.output_entry = Entry(self.output_frame, font=self.OUTPUT_FONT,
+                                  state=DISABLED, disabledbackground=self.OUTPUT_BG)
         self.output_entry.configure(bg=self.OUTPUT_BG, fg=self.OUTPUT_FG)
         self.output_entry.pack(fill=BOTH, expand=True)
 
-        self.button1 = Button(self.button_frame, font=self.BUTTON_FONT, text="1", command=partial(self.print_number, "1"))
-        self.button1.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button1 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="1", command=partial(self.print_number, "1"))
+        self.button1.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button1.grid(row=0, column=0, sticky=NSEW)
 
-        self.button2 = Button(self.button_frame, font=self.BUTTON_FONT, text="2", command=partial(self.print_number, "2"))
-        self.button2.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button2 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="2", command=partial(self.print_number, "2"))
+        self.button2.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button2.grid(row=0, column=1, sticky=NSEW)
 
-        self.button3 = Button(self.button_frame, font=self.BUTTON_FONT, text="3", command=partial(self.print_number, "3"))
-        self.button3.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button3 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="3", command=partial(self.print_number, "3"))
+        self.button3.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button3.grid(row=0, column=2, sticky=NSEW)
 
-        self.button_add = Button(self.button_frame, font=self.BUTTON_FONT, text="+", command=partial(self.print_number, "+"))
-        self.button_add.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_add = Button(self.button_frame, font=self.BUTTON_FONT,
+                                 text="+", command=partial(self.print_number, "+"))
+        self.button_add.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                                  width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_add.grid(row=0, column=3, sticky=NSEW)
 
-        self.button4 = Button(self.button_frame, font=self.BUTTON_FONT, text="4", command=partial(self.print_number, "4"))
-        self.button4.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button4 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="4", command=partial(self.print_number, "4"))
+        self.button4.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button4.grid(row=1, column=0, sticky=NSEW)
 
-        self.button5 = Button(self.button_frame, font=self.BUTTON_FONT, text="5", command=partial(self.print_number, "5"))
-        self.button5.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button5 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="5", command=partial(self.print_number, "5"))
+        self.button5.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button5.grid(row=1, column=1, sticky=NSEW)
 
-        self.button6 = Button(self.button_frame, font=self.BUTTON_FONT, text="6", command=partial(self.print_number, "6"))
-        self.button6.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button6 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="6", command=partial(self.print_number, "6"))
+        self.button6.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button6.grid(row=1, column=2, sticky=NSEW)
 
-        self.button_subtract = Button(self.button_frame, font=self.BUTTON_FONT, text="-", command=partial(self.print_number, "-"))
-        self.button_subtract.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_subtract = Button(
+            self.button_frame, font=self.BUTTON_FONT, text="-", command=partial(self.print_number, "-"))
+        self.button_subtract.configure(
+            bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_subtract.grid(row=1, column=3, sticky=NSEW)
 
-        self.button7 = Button(self.button_frame, font=self.BUTTON_FONT, text="7", command=partial(self.print_number, "7"))
-        self.button7.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button7 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="7", command=partial(self.print_number, "7"))
+        self.button7.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button7.grid(row=2, column=0, sticky=NSEW)
 
-        self.button8 = Button(self.button_frame, font=self.BUTTON_FONT, text="8", command=partial(self.print_number, "8"))
-        self.button8.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button8 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="8", command=partial(self.print_number, "8"))
+        self.button8.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button8.grid(row=2, column=1, sticky=NSEW)
 
-        self.button9 = Button(self.button_frame, font=self.BUTTON_FONT, text="9", command=partial(self.print_number, "9"))
-        self.button9.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button9 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="9", command=partial(self.print_number, "9"))
+        self.button9.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button9.grid(row=2, column=2, sticky=NSEW)
 
-        self.button_multiply = Button(self.button_frame, font=self.BUTTON_FONT, text="X", command=partial(self.print_number, "x"))
-        self.button_multiply.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_multiply = Button(
+            self.button_frame, font=self.BUTTON_FONT, text="X", command=partial(self.print_number, "x"))
+        self.button_multiply.configure(
+            bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_multiply.grid(row=2, column=3, sticky=NSEW)
 
-        self.button_dot = Button(self.button_frame, font=self.BUTTON_FONT, text=".", command=partial(self.print_number, "."))
-        self.button_dot.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_dot = Button(self.button_frame, font=self.BUTTON_FONT,
+                                 text=".", command=partial(self.print_number, "."))
+        self.button_dot.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                                  width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_dot.grid(row=3, column=0, sticky=NSEW)
 
-        self.button0 = Button(self.button_frame, font=self.BUTTON_FONT, text="0", command=partial(self.print_number, "0"))
-        self.button0.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button0 = Button(self.button_frame, font=self.BUTTON_FONT,
+                              text="0", command=partial(self.print_number, "0"))
+        self.button0.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG,
+                               width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button0.grid(row=3, column=1, sticky=NSEW)
 
-        self.button_equal = Button(self.button_frame, font=self.BUTTON_FONT, text="=", command=self.print_result)
-        self.button_equal.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_equal = Button(
+            self.button_frame, font=self.BUTTON_FONT, text="=", command=self.print_result)
+        self.button_equal.configure(
+            bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_equal.grid(row=3, column=2, sticky=NSEW)
 
-        self.button_divide = Button(self.button_frame, font=self.BUTTON_FONT, text="/", command=partial(self.print_number, "/"))
-        self.button_divide.configure(bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
+        self.button_divide = Button(
+            self.button_frame, font=self.BUTTON_FONT, text="/", command=partial(self.print_number, "/"))
+        self.button_divide.configure(
+            bg=self.BUTTON_BG, fg=self.BUTTON_FG, width=self.BUTTON_WIDTH, height=self.BUTTON_HEIGHT)
         self.button_divide.grid(row=3, column=3, sticky=NSEW)
 
         self.button_frame.grid_rowconfigure(0, weight=1)
@@ -258,7 +295,6 @@ if __name__ == '__main__':
                 pass
     except:
         pass
-
 
     app = Calculator(OUTPUT_BG, OUTPUT_FG, BUTTON_BG, BUTTON_FG)
     app.mainloop()
