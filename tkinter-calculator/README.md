@@ -47,8 +47,8 @@ python main.py
 
 ## Output
 
-![Screenshot](https://github.com/python-geeks/Automation-scripts/blob/main/tkinter-calculator/screenshot.PNG "Screenshot")
+![Screenshot](https://github.com/visheshdvivedi/Automation-scripts/blob/main/tkinter-calculator/screenshot.PNG "Screenshot")
 
 ## Author(s)
 
-Created by ![visheshdvivedi](https://github.com/visheshdvivedi)
+Created by [visheshdvivedi](https://github.com/visheshdvivedi)
